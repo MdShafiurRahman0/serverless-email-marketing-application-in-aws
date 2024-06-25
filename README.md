@@ -1,7 +1,8 @@
 # Serverless Email Marketing Application in AWS
 
 
-#Description: 
+##Description: 
+
 This project involves creating a serverless email marketing application using AWS services such as SES (Simple Email Service), Lambda, S3, EventBridge, and IAM. The application is designed to handle email marketing campaigns, automating the process of sending emails, managing templates, and tracking email performance.
 
 
