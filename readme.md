@@ -63,8 +63,5 @@ for managing email campaigns.
 
 ## How to build it
 
-You can following this steps.
-
-
-## What I Learned from Building a Serverless Email Marketing Application
+You can following this [steps](./docs/build.md).
 
