@@ -1,72 +1,90 @@
 # Serverless Email Marketing Application in AWS
 
 
-##Description: 
+**Description:**
 
 This project involves creating a serverless email marketing application using AWS services such as SES (Simple Email Service), Lambda, S3, EventBridge, and IAM. The application is designed to handle email marketing campaigns, automating the process of sending emails, managing templates, and tracking email performance.
 
 
 
-#Components and Architecture
 
-#Service We'll Be Using   
+# Components and Architecture
+
+**Service We'll Be Using**
 
 ![image](https://github.com/MdShafiurRahman0/serverless-email-marketing-application-in-aws/assets/113176437/2c187e96-a034-4745-9cb6-b49d2742fc7a)
 
 
 
-#Amazon Simple Email Service (SES):
+**Amazon Simple Email Service (SES):**
 
 Purpose: SES is used to send marketing emails to a list of recipients. It provides high deliverability rates and offers features such as email tracking and feedback loops.
+
 Usage: Emails are sent via SES, which can handle high volumes and ensures emails reach the inbox.
 
 
-#AWS Lambda:
+
+**AWS Lambda:**
 
 Purpose: Lambda functions are used to process various tasks in the email marketing workflow, such as sending emails, managing email lists, and handling incoming events.
+
 Usage: Lambda functions are triggered by events (e.g., new campaign creation, email send requests) and perform operations like reading templates from S3, sending emails through SES, and processing bounce and complaint notifications.
 
 
-#Amazon S3:
+
+
+**Amazon S3:**
 
 Purpose: S3 is used to store email templates, campaign data, and logs.
+
 Usage: Email templates are uploaded to S3 and read by Lambda functions. Campaign data (such as recipient lists and email content) is also stored in S3, allowing for easy access and management.
 
 
-#Amazon EventBridge:
+
+
+**Amazon EventBridge:**
 
 Purpose: EventBridge is used to handle event-driven workflows, ensuring that actions within the application trigger the appropriate Lambda functions.
+
 Usage: Events such as new campaign creation, email sends, and email tracking (opens, clicks) are captured by EventBridge and routed to the correct Lambda functions for processing.
 
 
-#AWS Identity and Access Management (IAM):
+
+**AWS Identity and Access Management (IAM):**
 
 Purpose: IAM is used to manage access control and permissions for the various AWS services and resources involved in the application.
+
 Usage: IAM roles and policies are set up to ensure that Lambda functions, SES, S3, and EventBridge have the necessary permissions to perform their tasks securely. Additionally, IAM integration with GitHub is used for deployment and CI/CD pipelines.
 Workflow
 
 
-#Project Overview:
+
+**Project Overview:**
 
 Users create a new email campaign by uploading recipient lists and email content (templates) to S3.
 An event is triggered in EventBridge, which activates a Lambda function to process the campaign data.
 
 
-#Email Sending:
+
+
+**Email Sending:**
 
 The Lambda function reads the email template and recipient list from S3, and sends emails using SES.
 SES sends the emails and tracks delivery status, opens, clicks, bounces, and complaints.
 
 
-#Event Handling:
+
+**Event Handling:**
 
 Events such as email bounces, complaints, opens, and clicks are captured by SES and sent to EventBridge.
 EventBridge routes these events to Lambda functions for processing, which can update campaign statistics and recipient lists in S3.
 
 
-#Security and Management
 
-#IAM Roles and Policies:
+**Security and Management**
+
+
+**IAM Roles and Policies:**
 Secure access to resources using fine-grained IAM policies. Lambda functions have specific roles that grant only the permissions they need to interact with SES, S3, and EventBridge.
 
 
@@ -82,18 +100,22 @@ This serverless email marketing application leverages the scalability, flexibili
 ![image](https://github.com/MdShafiurRahman0/serverless-email-marketing-application-in-aws/assets/113176437/d9bfb28c-253e-4a5b-8d74-049dc34873bf)
 
 
-# Step 1: Create S3 Bucket with Name
+
+
+**Step 1: Create S3 Bucket with Name**
 
 ![2024-06-24_17h07_04](https://github.com/MdShafiurRahman0/serverless-email-marketing-application-in-aws/assets/113176437/05eb2499-dab6-4036-b18e-5072431c1e1a)
 
 
-# Step 2:  Upload the Files
+
+**Step 2:  Upload the Files**
 
 ![2024-06-24_17h37_05](https://github.com/MdShafiurRahman0/serverless-email-marketing-application-in-aws/assets/113176437/d43d3ba1-9980-4612-b422-206ba3d6baf7)
 
 
 
-# Step 3: AWS SES follow the SS
+
+**Step 3: AWS SES follow the SS**
 
 
 ![2024-06-24_18h28_28](https://github.com/MdShafiurRahman0/serverless-email-marketing-application-in-aws/assets/113176437/05e38362-f3f2-4983-bac8-a85ee72634d7)
@@ -105,7 +127,9 @@ This serverless email marketing application leverages the scalability, flexibili
 ![2024-06-24_18h31_00](https://github.com/MdShafiurRahman0/serverless-email-marketing-application-in-aws/assets/113176437/1336b9e3-d572-497f-b19d-5af92bbdb3b5)
 
 
-## Step 1: Verify the Emails
+
+**Step 4: Verify the Emails**
+
 
 ![2024-06-24_18h35_50](https://github.com/MdShafiurRahman0/serverless-email-marketing-application-in-aws/assets/113176437/a186683c-d4a8-429d-85bb-bc286cb00506)
 
@@ -114,12 +138,15 @@ This serverless email marketing application leverages the scalability, flexibili
 
 
 
-## Step 1: Create the Identities
+
+**Step 5: Create the Identities**
 
 ![2024-06-24_18h39_35](https://github.com/MdShafiurRahman0/serverless-email-marketing-application-in-aws/assets/113176437/84189b2f-b058-4a32-b8f8-31d66ee63869)
 
 
-## Step 1: Send the Test Email
+
+
+**Step 6: Send the Test Email**
 
 ![2024-06-24_18h42_00](https://github.com/MdShafiurRahman0/serverless-email-marketing-application-in-aws/assets/113176437/25fafcad-b5c1-4061-9870-54c2e209c123)
 
@@ -128,7 +155,9 @@ This serverless email marketing application leverages the scalability, flexibili
 ![2024-06-24_18h42_59](https://github.com/MdShafiurRahman0/serverless-email-marketing-application-in-aws/assets/113176437/b2f1d955-d66a-4e0b-b0a3-b9763c4b3816)
 
 
-## Step 1: Create the Lambda Functions
+
+
+**Step 7: Create the Lambda Functions**
 
 ![2024-06-24_18h51_50](https://github.com/MdShafiurRahman0/serverless-email-marketing-application-in-aws/assets/113176437/2db44d80-e22f-4af6-9b46-8f2719581803)
 
@@ -136,7 +165,9 @@ This serverless email marketing application leverages the scalability, flexibili
 ![2024-06-24_18h52_10](https://github.com/MdShafiurRahman0/serverless-email-marketing-application-in-aws/assets/113176437/73612d89-1cad-4899-ba5e-d3917216f17c)
 
 
-## Step 1: Paste Lambda Function Python Code from the file 
+
+
+**Step 8: Paste Lambda Function Python Code from the file**
 
 ![2024-06-24_18h54_48](https://github.com/MdShafiurRahman0/serverless-email-marketing-application-in-aws/assets/113176437/adf3f3ab-50f1-48f0-8ff5-65a4769070f6)
 
@@ -144,7 +175,9 @@ This serverless email marketing application leverages the scalability, flexibili
 ![2024-06-24_19h43_47](https://github.com/MdShafiurRahman0/serverless-email-marketing-application-in-aws/assets/113176437/172902eb-abd8-40c1-b95f-3287cfacac75)
 
 
-## Step 1: Paste Lambda Function Test Event 
+
+
+**Step 9: Paste Lambda Function Test Event**
 
 ![2024-06-24_19h44_44](https://github.com/MdShafiurRahman0/serverless-email-marketing-application-in-aws/assets/113176437/b4010f0f-7779-4aa1-b18c-a17c328e5db4)
 
@@ -152,12 +185,15 @@ This serverless email marketing application leverages the scalability, flexibili
 
 
 
-## Step 1: Successfully tested the Event
+
+**Step 10: Successfully tested the Event**
 
 ![2024-06-24_19h49_10](https://github.com/MdShafiurRahman0/serverless-email-marketing-application-in-aws/assets/113176437/ed815c23-bf8a-44c1-a4b9-fd9ac31663d4)
 
 
-## Step 1: Creating IAM Role & Add Policy
+
+
+**Step 11: Creating IAM Role & Add Policy**
 
 ![2024-06-24_19h53_54](https://github.com/MdShafiurRahman0/serverless-email-marketing-application-in-aws/assets/113176437/4d3af022-9708-484b-9681-2b5444d91494)
 
@@ -168,7 +204,9 @@ This serverless email marketing application leverages the scalability, flexibili
 ![2024-06-24_19h56_39](https://github.com/MdShafiurRahman0/serverless-email-marketing-application-in-aws/assets/113176437/656585b4-d196-441a-996e-c8d625376f87)
 
 
-## Step 1: Add permissions in Policy 
+
+
+**Step 12: Add permissions in Policy**
 
 ![2024-06-24_23h04_38](https://github.com/MdShafiurRahman0/serverless-email-marketing-application-in-aws/assets/113176437/86a86128-0974-442a-b3e6-c08a4e9e0ca2)
 
@@ -177,7 +215,8 @@ This serverless email marketing application leverages the scalability, flexibili
 
 
 
-## Step 1: Finally 
+
+**Step 13: Finally**
 
 
 ![2024-06-24_23h06_34](https://github.com/MdShafiurRahman0/serverless-email-marketing-application-in-aws/assets/113176437/7724cae3-af9a-4657-aeeb-ea63e28567fc)
@@ -187,14 +226,17 @@ This serverless email marketing application leverages the scalability, flexibili
 ![2024-06-25_00h05_02](https://github.com/MdShafiurRahman0/serverless-email-marketing-application-in-aws/assets/113176437/dd7ce9ed-bdcc-428b-9cf2-f84ad85a3314)
 
 
-## Step 1: Add Policy 7 Test the Event 
+
+
+**Step 14: Add Policy 7 Test the Event**
 
 ![2024-06-25_00h05_19](https://github.com/MdShafiurRahman0/serverless-email-marketing-application-in-aws/assets/113176437/844e6283-51c9-4453-8e69-42fdaa72164a)
 
 ![2024-06-25_00h07_40](https://github.com/MdShafiurRahman0/serverless-email-marketing-application-in-aws/assets/113176437/946e1dc3-23a3-47a4-8def-0e8fe27f60b7)
 
 
-## Step 1: Email Marketing Template has Sentto the mail
+
+**Step 15: Email Marketing Template has Sentto the mail**
 
 ![2024-06-25_00h08_21](https://github.com/MdShafiurRahman0/serverless-email-marketing-application-in-aws/assets/113176437/1a028a71-15c6-4a9b-8cac-7436a9b70873)
 
@@ -203,7 +245,7 @@ This serverless email marketing application leverages the scalability, flexibili
 
 
 
-## Step 1: Create Eventbridge Schedule
+**Step 16: Create Eventbridge Schedule**
 
 ![2024-06-25_09h01_32](https://github.com/MdShafiurRahman0/serverless-email-marketing-application-in-aws/assets/113176437/a04b8d29-804a-4713-af1b-7c4166ed2104)
 
@@ -238,7 +280,9 @@ This serverless email marketing application leverages the scalability, flexibili
 ![2024-06-25_09h13_20](https://github.com/MdShafiurRahman0/serverless-email-marketing-application-in-aws/assets/113176437/dadddcf2-1b6a-49c4-944e-a15365800d3c)
 
 
-## Step 1: Successfully sent the mail on Sheduled Time
+
+
+**Step 17: Successfully sent the mail on Sheduled Time**
 
 ![2024-06-25_09h15_37](https://github.com/MdShafiurRahman0/serverless-email-marketing-application-in-aws/assets/113176437/305d1c96-7a0f-456c-b2b6-9264c0d7692d)
 
@@ -246,7 +290,9 @@ This serverless email marketing application leverages the scalability, flexibili
 ![2024-06-25_09h15_59](https://github.com/MdShafiurRahman0/serverless-email-marketing-application-in-aws/assets/113176437/4b06241a-cd3c-45d7-abee-0c01d8ae550a)
 
 
-## Step 1: CloudWatch, Let's see the Logs
+
+
+**Step 18: CloudWatch, Let's see the Logs**
 
 ![2024-06-25_09h18_25](https://github.com/MdShafiurRahman0/serverless-email-marketing-application-in-aws/assets/113176437/aaf583a7-14ca-4626-8bae-cebdca590670)
 
