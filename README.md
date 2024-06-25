@@ -1,0 +1,1 @@
+# serverless-email-marketing-application-in-aws
